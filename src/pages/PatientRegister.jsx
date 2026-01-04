@@ -14,23 +14,7 @@ export default function PatientRegister() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const handleRegister = async () => {
-  //   try {
-  //     const res = await dispatch(
-  //       registerPatient({ email, password, mobile })
-  //     ).unwrap();
 
-  //     localStorage.setItem("patientToken", res.token);
-  //     localStorage.setItem("patient_id", res.patient.patient_id);
-  //     localStorage.setItem("patient_email", email);
-
-  //     navigate("/take-info", {
-  //       state: { patientId: res.patient.patient_id },
-  //     });
-  //   } catch (err) {
-  //     alert(err.message || "Registration failed");
-  //   }
-  // };
 
 
  const handleRegister = async () => {
@@ -54,22 +38,33 @@ export default function PatientRegister() {
 
 
 
- const handleGoogleRegister = async () => {
+const handleGoogleRegister = async () => {
   try {
-    const res = await dispatch(firebaseRegister({ email, password })).unwrap();
+    const res = await dispatch(
+      firebaseRegister({ email, password })
+    ).unwrap();
 
-      if(res.flag){
-    localStorage.setItem("token", res.token);
-    navigate("/take-info",{
+    console.log("res =>", res);
+
+    if (res.flag) {
+      localStorage.setItem("token", res.token);
+      navigate("/take-info", {
         state: { patientId: res.user.patient_id },
       });
-    }else{
-      navigate('/login')
+    } else {
+            localStorage.setItem("patient_id", res.user.patient_id);
+      localStorage.setItem("patientToken", res.token);
+      localStorage.setItem("patient_email", email);
+      navigate("/dashboard");
     }
+
   } catch (err) {
-    alert(err);
+    console.error("ERROR =>", err);
+    alert(err.message || err);
   }
- }
+};
+
+
 
 
  return (

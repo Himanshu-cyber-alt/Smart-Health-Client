@@ -26,37 +26,47 @@ const handleLogin = async () => {
       loginPatient({ email, password })
     ).unwrap();
 
+
+    console.log(res)
+
     localStorage.setItem("patientToken", res.token);
     localStorage.setItem("patient_id", res.patient.patient_id);
     localStorage.setItem("patient_email", email);
 
     navigate("/dashboard");
   } catch (err) {
+    navigate("/register")
     alert(err?.message || "Login failed ❌");
   }
 };
 
 
 
- const handleGoogleLogin = async () => {
-    try {
-      const resultAction = await dispatch(firebaseRegister());
+const handleGoogleRegister = async () => {
+  try {
+    const res = await dispatch(
+      firebaseRegister({ email, password })
+    ).unwrap();
 
-   
-      if (firebaseRegister.fulfilled.match(resultAction)) {
+    console.log("res for login =>", res.user.patient_id);
 
-        
-        localStorage.setItem("patientToken", resultAction.payload.token);
-    localStorage.setItem("patient_id", resultAction.payload.user.patient_id);
-    localStorage.setItem("patient_email", resultAction.payload.user.email);
-        navigate("/dashboard");
-      } 
-     
-    } catch (err) {
-     console.log(err.message);
+    if (res.flag) {
+      localStorage.setItem("token", res.token);
+      navigate("/take-info", {
+        state: { patientId: res.user.patient_id },
+      });
+    } else {
+      localStorage.setItem("patient_id",res.user.patient_id);
+      localStorage.setItem("patientToken", res.token);
+      localStorage.setItem("patient_email", email);
+      navigate("/dashboard");
     }
-  };
 
+  } catch (err) {
+    console.error("ERROR =>", err);
+    alert(err.message || err);
+  }
+};
 
 
 
@@ -118,7 +128,7 @@ const handleLogin = async () => {
 
       {/* Google login */}
       <button
-        onClick={handleGoogleLogin}
+        onClick={handleGoogleRegister}
         className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-xl py-3 hover:bg-gray-100 transition"
       >
         <img

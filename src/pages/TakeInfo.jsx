@@ -7,22 +7,25 @@ const TakeInfo = () => {
   const location = useLocation();
 
   // ✅ Get both phone & patient_id from previous step
-  const { phone, patientId } = location.state || {};
+  const {patientId } = location.state || {};
+  
+  console.log(location.state)
 
-
+ 
+  console.log("patinet id => ",patientId)
   
 
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    gender: "",
-    symptoms: "",
+    firstName: "sua rupe dega",
+    gender: "male",
+    symptoms: " i dont know",
     dob: "",
-    height: "",
-    weight: "",
-    bloodGroup: "",
-    address: "",
+    height: "7",
+    weight: "67",
+    bloodGroup: "B+",
+    address: "gugufa",
   });
 
   const fields = [
@@ -43,6 +46,10 @@ const TakeInfo = () => {
 
   // ✅ Submit to backend
   const handleSubmit = async () => {
+
+
+
+
     if (!patientId) {
       alert("⚠️ Missing patient ID! Please register again.");
       return;
@@ -58,10 +65,12 @@ const TakeInfo = () => {
 
       const data = await res.json();
 
-      console.log(data)
+          console.log(data);
+          console.log(res.ok)
 
       if (res.ok) {
         alert("✅ Patient info saved successfully!");
+       localStorage.setItem("patient_id",patientId);
         console.log("Saved Data:", data);
         navigate("/dashboard", { state: { patientId, ...formData } });
       } else {

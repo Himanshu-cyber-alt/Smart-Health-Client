@@ -1,17 +1,4 @@
-// import React from "react";
-// import { Navigate } from "react-router-dom";
 
-// const ProtectedRoute = ({ user, children }) => {
-//   if (!user) {
-//     return <Navigate to="/" replace />;
-//   }
-//   return children;
-// };
-
-// export default ProtectedRoute;
-
-
-// ProtectedRoute.jsx
 import React from "react";
 import { Navigate } from "react-router-dom";
 
@@ -25,4 +12,6 @@ const token = localStorage.getItem("patientToken");
 
   return children; // user is logged in, render the page
 }
+
+
 

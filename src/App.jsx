@@ -39,15 +39,29 @@ function App() {
         
         <Route path="/login" element={<Login />} />
 
-         <Route
+         {/* <Route
           path="/dashboard"
           element={ 
-            <ProtectedRoute>
+         
               <PatientDashboard />
-              </ProtectedRoute>
+           
           
           }
-        />
+        /> */}
+
+
+
+
+
+        <Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <PatientDashboard />
+    </ProtectedRoute>
+  }
+/>
+
 
 
         <Route path="/profile" element={ <ProtectedRoute><Profile /> </ProtectedRoute>} />
@@ -79,7 +93,7 @@ function App() {
         />
         <Route path="/appointment" element={  <ProtectedRoute> <Appointment /> </ProtectedRoute>} />
         <Route path = "/myappointments" element = { <ProtectedRoute><MyAppointment/> </ProtectedRoute>}/>
-        <Route path="/doctors" element={  <ProtectedRoute> <Doctors />   </ProtectedRoute>} />
+        <Route path="/doctors" element={   <Doctors /> } />
 
         {/* Doctor routes */}
         <Route path="/doctor/register" element={<DoctorRegister />} />

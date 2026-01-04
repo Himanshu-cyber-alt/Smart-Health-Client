@@ -26,11 +26,9 @@ export default function PatientDashboard() {
 
 
   const handleLogout = () => {
- 
     dispatch(logout());
       localStorage.removeItem("patientToken");
     localStorage.removeItem("patient_id");
-   
       navigate("/")
     
   };
