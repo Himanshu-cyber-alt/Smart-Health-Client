@@ -98,9 +98,9 @@ function App() {
         {/* Doctor routes */}
         <Route path="/doctor/register" element={<DoctorRegister />} />
         <Route path="/doctor/login" element={<DoctorLogin />} />
-        <Route path="/doctor/dashboard" element={  <ProtectedRoute>  <DoctorDashboard />   </ProtectedRoute>} />
-        <Route path="/doctor-home" element={   <ProtectedRoute>  <DoctorHome />    </ProtectedRoute>}/>
-        <Route path="/doctor-appointments" element ={  <ProtectedRoute><DoctorAppointment /> </ProtectedRoute>} />
+        <Route path="/doctor/dashboard" element={    <DoctorDashboard />  } />
+        <Route path="/doctor-home" element={     <DoctorHome />  }/>
+        <Route path="/doctor-appointments" element ={  <DoctorAppointment /> } />
       </Routes>
     </Router>
   );
