@@ -27,7 +27,7 @@ export default function MyAppointment() {
           return;
         }
 
-        const res = await fetch(`http://localhost:5000/api/appointments/${patientId}`);
+        const res = await fetch(`https://smart-health-server.onrender.com/api/appointments/${patientId}`);
         if (!res.ok) throw new Error("Failed to fetch appointments.");
         
         const data = await res.json();

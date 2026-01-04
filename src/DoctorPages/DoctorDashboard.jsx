@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import { Phone, PhoneOff } from "lucide-react";
 import { em } from "framer-motion/client";
-
-const socket = io("http://localhost:5000");
+const socket = io("https://smart-health-server.onrender.com");
 
 export default function DoctorDashboard() {
   const doctorEmail = localStorage.getItem("doctor_email");
+  
   const localVideo = useRef();
   const remoteVideo = useRef();
   const pc = useRef(null);
@@ -114,6 +114,7 @@ export default function DoctorDashboard() {
 
     setCallStatus("idle");
     setIncomingCall(null);
+  
   }
 
   return (
