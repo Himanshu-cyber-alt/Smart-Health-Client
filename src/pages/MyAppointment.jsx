@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"; // Animation library
 import { Clock, Calendar, Video, MapPin, User, AlertCircle } from "lucide-react";
 import Navbar from "../components/Navbar"; // Assuming you have this from your dashboard
 
+
 export default function MyAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -115,7 +116,9 @@ export default function MyAppointment() {
   }
 
   return (
+
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900 font-sans selection:bg-gray-200">
+      
       <Navbar />
 
       {/* Header */}

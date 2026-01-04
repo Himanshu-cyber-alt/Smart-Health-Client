@@ -48,7 +48,7 @@ const handleGoogleRegister = async () => {
       firebaseRegister({ email, password })
     ).unwrap();
 
-    console.log("res for login =>", res.user.patient_id);
+    console.log("res for login =>", res);
 
     if (res.flag) {
       localStorage.setItem("token", res.token);
@@ -58,7 +58,7 @@ const handleGoogleRegister = async () => {
     } else {
       localStorage.setItem("patient_id",res.user.patient_id);
       localStorage.setItem("patientToken", res.token);
-      localStorage.setItem("patient_email", email);
+      localStorage.setItem("patient_email", res.user.email);
       navigate("/dashboard");
     }
 

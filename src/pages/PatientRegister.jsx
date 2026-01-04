@@ -52,9 +52,9 @@ const handleGoogleRegister = async () => {
         state: { patientId: res.user.patient_id },
       });
     } else {
-            localStorage.setItem("patient_id", res.user.patient_id);
+      localStorage.setItem("patient_id", res.user.patient_id);
       localStorage.setItem("patientToken", res.token);
-      localStorage.setItem("patient_email", email);
+      localStorage.setItem("patient_email", res.user.email);
       navigate("/dashboard");
     }
 
