@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { registerPatient } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { firebaseRegister } from "../features/auth/authSlice";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
 
 export default function PatientRegister() {
   const [email, setEmail] = useState("");
