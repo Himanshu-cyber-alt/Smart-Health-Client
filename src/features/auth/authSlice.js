@@ -2,7 +2,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
-import { auth, provider } from "../../firebase.js";
+import { auth, provider } from "../../firebase/firebase.js";
 import { signInWithPopup } from "firebase/auth";
 import axios from "axios";
 
