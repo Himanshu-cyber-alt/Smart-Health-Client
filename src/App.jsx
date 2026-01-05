@@ -24,6 +24,7 @@ import MyAppointment from "./pages/MyAppointment";
 import TakeInfo from "./pages/TakeInfo";
 import DoctorHome from "./DoctorPages/DoctorHome";
 import DoctorAppointment from "./DoctorPages/DoctorAppointment.jsx"
+import CallPage from "./pages/CallPage.jsx";
 
 function App() {
 
@@ -88,9 +89,9 @@ function App() {
          </ProtectedRoute>
    
       } 
-        
-        
+      
         />
+           <Route path="/call/:roomId" element={<CallPage />} />
         <Route path="/appointment" element={  <ProtectedRoute> <Appointment /> </ProtectedRoute>} />
         <Route path = "/myappointments" element = { <ProtectedRoute><MyAppointment/> </ProtectedRoute>}/>
         <Route path="/doctors" element={   <Doctors /> } />
