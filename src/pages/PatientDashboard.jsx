@@ -15,7 +15,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import { getPatientProfile, logout } from "../features/auth/authSlice";
-import axios from "axios";
 
 export default function PatientDashboard() {
   const navigate = useNavigate();
@@ -25,14 +24,6 @@ export default function PatientDashboard() {
 
   const { profile, isLoading } = useSelector((state) => state.auth);
 
-
-  const handleLogout = () => {
-    dispatch(logout());
-      localStorage.removeItem("patientToken");
-    localStorage.removeItem("patient_id");
-      navigate("/")
-    
-  };
 
 
 
@@ -50,23 +41,6 @@ export default function PatientDashboard() {
 
 
 
-
-    if (profile == null) {
-  async function removePaitent() {
-    try {
-      const ans = await axios.delete(
-        `https://smart-health-server.onrender.com/api/patients/${patientId}`
-      );
-      console.log(ans.data);
-      window.alert("Please Register Again ")
-      navigate("/register");
-    } catch (err) {
-      console.error(err);
-    }
-  }
-  removePaitent();
-}
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen text-gray-600">
@@ -74,6 +48,17 @@ export default function PatientDashboard() {
       </div>
     );
   }
+
+
+    const handleLogout = () => {
+     
+    dispatch(logout());
+      localStorage.removeItem("patientToken");
+    localStorage.removeItem("patient_id");
+      navigate("/")
+    
+  };
+
 
  
   return (
@@ -152,12 +137,12 @@ export default function PatientDashboard() {
                 whileHover={{ scale: 1.02 }}
               >
                 <div>
-                  <h2 className="text-sm text-gray-500">{item.label}</h2>
-                  <p className="text-lg font-medium text-gray-800 mt-1">
+                  <h2 className="text-sm text-black">{item.label}</h2>
+                  <p className="text-lg font-medium text-black mt-1">
                     {item.value || "—"}
                   </p>
                 </div>
-                <item.icon className="w-8 h-8 text-gray-400" />
+                <item.icon className="w-8 h-8 text-black-400" />
               </motion.div>
             ))}
           </motion.div>
