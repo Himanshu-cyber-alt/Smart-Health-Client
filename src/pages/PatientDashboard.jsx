@@ -34,6 +34,7 @@ export default function PatientDashboard() {
   };
 
 
+
   useEffect(() => {
     if (!patientId) {
       navigate("/");
@@ -43,6 +44,27 @@ export default function PatientDashboard() {
     dispatch(getPatientProfile(patientId));
   }, [dispatch, patientId,navigate]);
 
+
+
+
+
+
+
+    if (profile == null) {
+  async function removePaitent() {
+    try {
+      const ans = await axios.delete(
+        `https://smart-health-server.onrender.com/api/patients/${patientId}`
+      );
+      console.log(ans.data);
+      window.alert("Please Register Again ")
+      navigate("/register");
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  removePaitent();
+}
 
   if (isLoading) {
     return (
