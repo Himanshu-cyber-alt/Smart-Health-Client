@@ -18,14 +18,14 @@ const TakeInfo = () => {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "sua rupe dega",
-    gender: "male",
-    symptoms: " i dont know",
+    firstName: "",
+    gender: "",
+    symptoms: "",
     dob: "",
-    height: "7",
-    weight: "67",
-    bloodGroup: "B+",
-    address: "gugufa",
+    height: "",
+    weight: "",
+    bloodGroup: "",
+    address: "",
   });
 
   const fields = [

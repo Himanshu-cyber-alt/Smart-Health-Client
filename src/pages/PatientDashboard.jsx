@@ -15,6 +15,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import { getPatientProfile, logout } from "../features/auth/authSlice";
+import axios from "axios";
 
 export default function PatientDashboard() {
   const navigate = useNavigate();
